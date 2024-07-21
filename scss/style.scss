@@ -1,66 +1,9 @@
 @import 'vars';
 @import 'fonts';
-
-html {
-    box-sizing: border-box;
-}
-
-*,
-*::after,
-*::before {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
-}
-
-ul,
-li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
+@import 'global';
 
 
-
-body {
-    min-width: 320px;
-    overflow-x: hidden;
-    font-family: "Roboto-Regular", "Arial", "sans-serif";
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
-}
-
-.container {
-    padding: 0 20px;
-}
-
-@media (min-width:640px) {
-    .container {
-        padding: 0 30px;
-    }
-}
-
-@media (min-width:768px) {
-    .container {
-        padding: 0 40px;
-    }
-}
-
-@media (min-width:1024px) {
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 40px;
-    }
-}
-
-@media (min-width:1440px) {
-    .container {
-        max-width: 1320px;
-    }
-
-}
+// Header
 
 .header {
     background-color: $accent ;
@@ -73,36 +16,15 @@ body {
     }
 }
 
-@media (min-width:640px) {
-    .header {
-        &__inner {
-            min-height: 100px;
-        }
-    }
-}
-
-.logo-link {
+.logo__link {
     margin-left: 8px;
 }
-
-@media (min-width:640px) {
-    .logo-link {
-        margin-left: 14px;
-    }
-}
-
-@media (min-width: 768) {
-    .logo-link {
-        margin-left: 0;
-    }
-}
-
 
 .menu__btn {
     width: 40px;
     height: 40px;
     border-radius: 3px;
-    background-color: #fff;
+    background-color: $bg-color;
     border: none;
     position: relative;
 
@@ -116,32 +38,54 @@ body {
         top: 15px;
         left: 14px;
         box-shadow: 0 4px 0 0 $accent, 0 8px 0 0 $accent;
-
-
     }
-
 }
 
+// Header для ширини, більше 640px
+@media (min-width:640px) {
+    .header {
+        &__inner {
+            min-height: 100px;
+        }
+    }
+}
+
+// Header для ширини, більше 768px
+@media (min-width: 768) {
+    .logo-link {
+        margin-left: 0;
+    }
+}
+
+// Header для ширини, більше 1440px
 @media (min-width:1440px) {
     .menu__btn {
-        margin-right: 90px;
+        margin-right: 0px;
     }
 }
 
+
+// Slick-slider section
 .head {
     background-image: url(../images/bg-slider.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     min-height: 193px;
-
 }
+
+@media (min-width:640px) {
+    .head {
+        min-height: 386px;
+    }
+}
+
 
 .top-slider {
     background: rgba(33, 33, 33, 0.5);
 
     &__item {
-        color: #fff;
+        color: $bg-color;
         text-align: center;
         min-height: 193px;
 
@@ -168,35 +112,1339 @@ body {
             background-color: $text-color;
             width: 61px;
             margin: 0 auto;
-
         }
+    }
+
+    &__text {
+        display: none;
 
     }
 
-    .slick-dots {
-        display: flex;
-        justify-content: center;
-        position: absolute;
-        bottom: 20px;
-        left: 0;
-        right: 0;
+    &__btm {
+        display: none;
+    }
+}
 
-        .slick-active {
-            button {
-                background-color: transparent;
-                border: 1px solid $accent;
-            }
+.slick-dots {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+
+    .slick-active {
+        button {
+            background-color: transparent;
+            border: 1px solid $accent;
+        }
+    }
+
+
+    button {
+        font-size: 0;
+        border: none;
+        background-color: $accent;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        margin: 0 10px;
+    }
+}
+
+// Slick-slider для ширини, більше 640px
+
+@media (min-width: 640px) {
+    .top-slider {
+        &__item {
+            min-height: 386px;
+        }
+
+        &__title {
+            font-size: 60px;
+            line-height: 60px;
+            padding: 50px 0 15px;
+            margin: 0 auto 30px;
+            min-width: 400px;
+        }
+
+        &__btm {
+            display: block;
+            margin: 0 auto 113px;
+            font-size: 18px;
+            font-weight: 500;
+            background-color: $accent;
+            color: $bg-color;
+            padding: 16px 45px;
+            border-radius: 3px;
+            border: none;
+        }
+
+        .slick-dots {
+            bottom: 50px;
+        }
+
+        .slick-arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 56px;
+            width: 56px;
+            border: none;
+            position: absolute;
+
+            z-index: 5;
+            border-radius: 50%;
+
+        }
+
+        .slick-prev {
+            background-color: #9B7475;
+            top: calc(50% - 28px);
+            left: 10px;
         }
 
 
-        button {
-            font-size: 0;
-            border: none;
+        .slick-next {
+            background-color: #f9f6e5;
+            bottom: calc(50% - 28px);
+            right: 10px;
+        }
+    }
+}
+
+// Slick-slider для ширини, більше 768px
+@media (min-width: 768px) {
+    .top-slider {
+
+        &__item {
+            min-height: 465px;
+        }
+
+        &__title {
+            padding: 87px 0 0;
+            margin: 0 auto 0;
+
+            &::after {
+                display: none;
+            }
+        }
+
+        &__text {
+            padding: 25px 0 32px;
+            font-family: "RobotoCondensed-Regular";
+            line-height: 24px;
+            font-size: 18px;
+            font-weight: 400;
+            max-width: 587px;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+}
+
+// Slick-slider для ширини, більше 1024px
+@media (min-width: 1024px) {
+    .top-slider {
+        &__item {
+            min-height: 618px;
+        }
+
+        &__title {
+            font-size: 84px;
+            padding-top: 101px;
+            line-height: 84px;
+            letter-spacing: 2px;
+            min-width: 550px;
+
+        }
+
+        .slick-arrow {
+
+
+            height: 70px;
+            width: 70px;
+        }
+
+
+        .slick-dots {
+            bottom: 80px;
+        }
+    }
+}
+
+// Slick-slider для ширини, більше 1440px
+@media (min-width: 1440px) {
+    .top-slider {
+        &__item {
+            min-height: 668px;
+        }
+
+        &__title {
+            font-size: 96px;
+            padding-top: 107px;
+            line-height: 96px;
+            letter-spacing: 2px;
+            max-width: 550px;
+        }
+
+        &__text {
+            max-width: 900px;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 30px;
+        }
+    }
+}
+
+
+// Call section
+.call {
+    background-color: $accent;
+    padding: 40px 0;
+    color: $bg-color;
+    text-align: center;
+
+
+    &__title {
+        @extend %roboto-500;
+        font-size: 24px;
+        line-height: 24px;
+        margin-bottom: 10px;
+
+
+
+    }
+
+    &__text {
+        @extend %dosis-300;
+        margin-bottom: 40px;
+    }
+
+    &__btn {
+        padding: 16px 15px;
+        background-color: $bg-color;
+        color: $accent;
+        font-size: 18px;
+        @extend %roboto-500;
+        border-radius: 3px;
+        border: none;
+        text-transform: uppercase;
+    }
+}
+
+// Call section для ширини, від 768px
+
+@media (min-width: 768px) {
+    .call {
+        text-align: left;
+
+        &__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        &__box {
+            max-width: 427px;
+        }
+
+        &__text {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// Call section для ширини, від 1024px
+
+@media (min-width: 1024px) {
+    .call {
+        &__box {
+            max-width: 580px;
+        }
+
+        &__inner {
+            padding: 0 30px;
+
+        }
+    }
+}
+
+// Call section для ширини, від 1440px
+
+@media (min-width: 1440px) {
+    .call {
+        &__box {
+            max-width: 796px;
+        }
+
+        &__inner {
+            padding: 0 80px;
+
+        }
+    }
+}
+
+
+// Servise section
+.services {
+    padding: 25px 0 40px;
+    text-align: center;
+
+    &__title {
+        margin-bottom: 47px;
+        color: $accent
+    }
+
+    &__description {
+        line-height: 24px;
+        font-size: 20px;
+        color: $text-color;
+        margin-bottom: 21px;
+    }
+
+    &__text {
+        font-size: 15px;
+        line-height: 18px;
+        margin-bottom: 40px;
+    }
+
+    &__item {
+        min-height: 310px;
+        border: 1px solid $accent;
+        border-bottom: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &:last-child {
+            border-bottom: 1px solid $accent;
+        }
+
+        &:hover {
+
+            .services__item-link,
+            .services__item-text {
+                opacity: 1;
+                height: auto;
+                overflow: hidden;
+            }
+
+            .services__item-title {
+                margin-bottom: 30px;
+            }
+
+            .services__item-inner {
+                border: 4px solid $accent ;
+                margin: 18px;
+                padding: 25px 20px 5px;
+                min-height: 277px;
+                transition: all 0.5s;
+            }
+
+            .services__item-img {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__item-img {
+        margin-bottom: 30px;
+    }
+
+    &__item-title {
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 2px;
+        color: $text-color;
+        text-transform: uppercase;
+        @extend %robotocondensed-700;
+    }
+
+    &__item-text,
+    &__item-link {
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        transition: all 0.5s;
+    }
+
+    &__item-text {
+        margin-bottom: 27px;
+        @extend %dosis-500;
+    }
+
+    &__item-link {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: $accent;
+        @extend %robotocondensed-700;
+    }
+}
+
+// Servise section для ширини, більше 640px
+@media (min-width: 640px) {
+    .services {
+        padding: 25px 0 0;
+
+        &__title {
+            margin-bottom: 20px;
+            padding-bottom: 0px;
+
+            &::after {
+                display: none;
+            }
+        }
+
+        &__description {
+            font-size: 24px;
+            padding-bottom: 38px;
+            margin-bottom: 31px;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 100px;
+                height: 8px;
+                background-color: $accent;
+                bottom: 0;
+                margin: 0 auto;
+                left: 0;
+                right: 0;
+            }
+        }
+
+        &__text {
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        &__items {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -30px;
+        }
+
+        &__item {
+            width: 50%;
+
+            &:nth-child(even) {
+                border-left: none;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+// Servise section для ширини, більше 768px
+
+@media (min-width: 768px) {
+    .services {
+        padding: 50px 0 0;
+
+        &__title {
+            margin-bottom: 30px;
+        }
+
+        &__description {
+            text-align: left;
+
+            &::after {
+                margin-left: 0;
+            }
+        }
+
+        &__text {
+            margin-bottom: 27px;
+            text-align: left;
+        }
+
+        &__items {
+            margin: 0 -40px;
+        }
+
+        &__item {
+            min-height: 334px;
+
+
+            &:hover {
+                .services__item-inner {
+                    margin: 18px;
+                    padding: 35px 35px 5px;
+                    min-height: 288px;
+                }
+            }
+        }
+    }
+}
+
+// Servise section для ширини, більше 1024px
+
+@media (min-width: 1024px) {
+    .services {
+        padding: 52px 0 0;
+
+        &__title {
+            margin-bottom: 61px;
+        }
+
+        &__description {
+            padding-bottom: 46px;
+            margin-bottom: 40px;
+        }
+
+        &__text {
+            margin-bottom: 32px;
+            max-width: 608px;
+        }
+
+        &__item {
+            min-height: 275px;
+            width: 25%;
+
+            &:nth-child(2),
+            &:nth-child(6) {
+                border-right: none;
+            }
+
+            &:hover {
+                .services__item-inner {
+                    margin: 10px 17px;
+                    padding: 35px 15px 10px;
+                    min-height: 265px;
+                }
+
+                .services__item-text {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    line-clamp: 2;
+                    -webkit-box-orient: vertical;
+
+                }
+            }
+        }
+    }
+}
+
+// Servise section для ширини, більше 1440px
+
+@media (min-width: 1440px) {
+    .services {
+        padding: 0;
+
+        &__inner {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 -100px 0 -50px;
+        }
+
+        &__head {
+            max-width: 350px;
+            margin-right: 100px;
+
+        }
+
+        &__title {
+            text-align: left;
+            margin-top: 100px;
+            margin-bottom: 70px;
+        }
+
+        &__description {
+            padding-bottom: 38px;
+            margin-bottom: 40px;
+        }
+
+        &__items {
+            justify-content: end;
+            margin: 0;
+        }
+
+        &__item {
+            height: 280px;
+            width: 240px;
+            padding: 0 10px;
+
+            &:hover {
+                padding: 0 5px;
+
+                .services__item-inner {
+                    margin: 10px 17px;
+                    padding: 10px 5px 10px;
+                    min-height: 265px;
+                }
+            }
+        }
+    }
+}
+
+
+// Project section
+.project {
+    padding: 40px 0;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(155, 116, 117, 1) 0%, rgba(155, 116, 117, 0.1) 100%);
+
+    &__title {
+        color: $bg-color;
+        margin-bottom: 40px;
+
+        &::after {
+            background-color: $bg-color;
+        }
+    }
+
+    &__item-img {
+        min-height: 250px;
+        border-radius: 4px;
+        padding: 12px 14px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        &:hover {
+            .project__item-inner {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__item-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        background-color: rgba($bg-color, .83);
+        // margin: 21px 24px;
+        min-height: 227px;
+        gap: 15px;
+        opacity: 0;
+        transition: all .5s;
+    }
+
+    &__item-link {
+        display: block;
+        padding: 20px 0;
+        letter-spacing: 2px;
+        line-height: 19px;
+        color: $accent;
+        @extend %robotocondensed-700;
+    }
+}
+
+// Project section для ширини, більше 640px
+@media (min-width: 640px) {
+    .project {
+        padding: 40px 0;
+
+        &__title {
+            margin-bottom: 40px;
+        }
+
+        &__item-img {
+            min-height: 460px;
+            margin: 4px 30px;
+        }
+
+        &__item-inner {
+            margin: 5px 8px;
+            min-height: 417px;
+        }
+
+        &__item-link {
+            font-size: 24px;
+            line-height: 24px;
+        }
+    }
+}
+
+// Project section для ширини, більше 768px
+@media (min-width: 768px) {
+    .project {
+        padding: 80px 0;
+
+        &__title {
+            margin-bottom: 80px;
+        }
+
+        &__items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        &__item-img {
+            width: 317px;
+            min-height: 282px;
+            margin: 4px 10px;
+        }
+
+        &__item-inner {
+            margin: 5px 8px;
+            min-height: 256px;
+        }
+
+        &__item-link {
+            padding: 30px 0;
+        }
+    }
+}
+
+// Project section для ширини, більше 1024px
+@media (min-width: 1024px) {
+    .project {
+
+        &__items {
+            justify-content: center;
+        }
+
+        &__item-img {
+            margin: 0px 12px;
+        }
+    }
+}
+
+// Project section для ширини, більше 1440px
+@media (min-width: 1440px) {
+    .project {
+
+        &__items {
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+
+        &__item-img {
+            width: 300px;
+            margin: 0px;
+        }
+    }
+}
+
+
+// Team section
+.team {
+    padding: 0 0 40px;
+    text-align: center;
+
+    &__img {
+        width: 100%;
+        margin-bottom: 40px;
+        border-radius: 4px;
+    }
+
+    &__title {
+        color: $accent;
+        margin-bottom: 23px;
+
+        &::after {
             background-color: $accent;
-            height: 10px;
-            width: 10px;
-            border-radius: 50%;
-            margin: 0 10px;
+        }
+    }
+
+    &__text {
+        margin: 23px 0 84px;
+    }
+
+    &__btm {
+        border: none;
+        background-color: $accent;
+        padding: 21px 26px;
+        text-transform: uppercase;
+        color: $bg-color;
+        font-size: 20px;
+        line-height: 18px;
+        border-radius: 4px;
+        @extend %roboto-500;
+    }
+}
+
+// Team section  для ширини, більше 640px
+@media (min-width: 640px) {
+
+    .team {
+        padding: 46px 0 43px;
+
+        &__img {
+            margin-bottom: 40px;
+        }
+
+        &__title {
+            margin-bottom: 40px;
+        }
+
+        &__text {
+            margin: 56px;
+        }
+
+        &__btm {
+            font-size: 26px;
+        }
+    }
+}
+
+// Team section  для ширини, більше 768px
+@media (min-width: 768px) {
+    .team {
+        padding: 40px 0px 48px;
+        text-align: left;
+
+        &__inner {
+            display: flex;
+        }
+
+        &__img {
+            margin-bottom: 0px;
+            width: 240px;
+            height: 100%;
+            margin-right: 34px;
+        }
+
+        &__title {
+            margin-bottom: 7px;
+            font-size: 36px;
+            line-height: 38px;
+            padding-bottom: 28px;
+
+            &::after {
+                margin-left: 0px;
+            }
+        }
+
+        &__text {
+            margin: 7px 0 30px;
+            font-size: 18px;
+        }
+
+        &__btm {
+            font-size: 18px;
+        }
+    }
+}
+
+// Team section  для ширини, більше 1024px
+@media (min-width: 1024px) {
+    .team {
+        padding: 80px 0px;
+
+        &__img {
+            width: 395px;
+            margin-right: 60px;
+        }
+
+        &__title {
+            margin-bottom: 10px;
+            padding-bottom: 19px;
+        }
+
+        &__text {
+            margin-bottom: 12px;
+            line-height: 24px;
+        }
+    }
+}
+
+// Team section  для ширини, більше 1440px
+@media (min-width: 1440px) {
+    .team {
+        padding: 50px 0 110px;
+
+        &__img {
+            width: 470px;
+            margin-right: 93px;
+        }
+
+        &__title {
+            padding-bottom: 40px;
+        }
+
+        &__text {
+            margin-bottom: 40px;
+            width: 553px;
+        }
+    }
+}
+
+
+
+// Galery section
+.galery {
+    background-color: $bg-color;
+    padding: 40px 0 20px;
+    text-align: center;
+
+    &__title {
+        margin-bottom: 68px;
+    }
+
+    &__grid {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 4px;
+        justify-content: center;
+    }
+
+    &__item {
+        max-width: 270px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(250, 246, 246, 0.19);
+        margin-bottom: 25px;
+        border: 5px solid $accent;
+        border-radius: 4px;
+        vertical-align: middle;
+    }
+
+    &__item-1,
+    &__item-2,
+    &__item-3,
+    &__item-4,
+    &__item-5,
+    &__item-6,
+    &__item-7,
+    &__item-8 {
+        width: 100%;
+    }
+
+    &__img-text {
+        text-align: center;
+        padding: 10px 20px;
+        font-size: 18px;
+        @extend %robotocondensed-700;
+        letter-spacing: 2px;
+    }
+}
+
+// Galery section для ширини, більше 640px
+@media (min-width: 640px) {
+    .galery {
+
+        &__inner {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}
+
+// Galery section для ширини, більше 768px
+
+@media (min-width: 768px) {
+    .galery {
+
+        &__inner {
+
+            justify-content: space-evenly;
+            margin-bottom: 29px;
+
+            gap: 10%;
+        }
+    }
+}
+
+// Galery section для ширини, більше 1024px
+@media (min-width: 1024px) {
+    .galery {
+        &__inner {
+            margin-bottom: 35px;
+            flex-wrap: nowrap;
+        }
+    }
+}
+
+// Galery section для ширини, більше 1160px
+@media (min-width: 1160px) {
+    .galery {
+
+        &__grid {
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+
+        &__inner {
+            margin-bottom: 53px;
+            justify-content: space-between;
+            gap: 0;
+
+        }
+    }
+}
+
+// Galery section для ширини, більше 1440px
+@media (min-width: 1440px) {
+    .galery {
+
+        &__grid {
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+
+        &__inner {
+            margin-bottom: 53px;
+            justify-content: space-between;
+            gap: 10%;
+
+        }
+    }
+}
+
+
+// Scroll section
+
+.scroll {
+    text-align: center;
+    padding: 40px 0 85px;
+    position: relative;
+
+    &__hooks {
+        padding: 0px 0 92px;
+    }
+
+    &__items {
+        min-width: 300px;
+        width: 100%;
+
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px;
+        scroll-behavior: smooth;
+    }
+
+    &__inner {
+        display: inline-flex;
+        min-height: 300px;
+        background-color: #fff;
+        flex-direction: column;
+    }
+
+    &__item {
+        display: block;
+
+        white-space: normal;
+        padding: 0px 39px;
+        font-size: 24px;
+        line-height: 26px;
+        @extend %robotocondensed-400;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -20px; // Відстань від краю блоку
+            width: 2px;
+            height: 300px;
+            background-color: $accent;
+        }
+
+        &:last-child::after {
+            display: none;
+        }
+
+        strong {
+            color: $accent;
+        }
+    }
+
+    &__item-name {
+        display: block;
+        margin: 20px 0 40px;
+        font-size: 20px;
+        letter-spacing: 2px;
+        @extend %robotocondensed-700;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+    height: 20px;
+}
+
+/* Встановлюємо фон для доріжки (треку) смуги прокрутки */
+::-webkit-scrollbar-track {
+    background: $bg-color;
+    border-radius: 10px;
+}
+
+/* Стилізуємо бігунець смуги прокрутки */
+::-webkit-scrollbar-thumb {
+    background: rgba($accent, .5);
+    border-radius: 50px;
+}
+
+/* При наведенні курсору змінюємо колір бігунця */
+::-webkit-scrollbar-thumb:hover {
+    background: $accent ;
+}
+
+
+
+// Scroll section для ширини, більше 640px
+@media (min-width: 640px) {
+    .scroll {
+        padding: 60px 0 45px;
+
+        &__hooks {
+            padding: 0px 0 40px;
+        }
+
+        &__item {
+            font-size: 32px;
+            line-height: 34px;
+        }
+
+        &__item-name {
+            margin: 40px 0 90px;
+            font-size: 20px;
+            letter-spacing: 2px;
+            @extend %robotocondensed-700;
+        }
+    }
+}
+
+// Scroll section для ширини, більше 768px
+@media (min-width: 768px) {
+    .scroll {
+        padding: 60px 0 85px;
+    }
+}
+
+// Scroll section для ширини, більше 1024px
+@media (min-width: 1024px) {
+    .scroll {
+        padding: 100px 0 84px;
+
+        &__hooks {
+            padding: 0px 0 44px;
+        }
+
+        &__item-name {
+            margin: 40px 0 90px;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+    }
+}
+
+// Scroll section для ширини, більше 1440px
+@media (min-width: 1440px) {
+    .scroll {
+
+        &__hooks {
+            padding: 0px 0 30px;
+        }
+
+        &__item {
+            font-size: 36px;
+            line-height: auto;
+        }
+
+        &__item-name {
+            margin: 40px 0 90px;
+            font-size: 24px;
+        }
+    }
+}
+
+// Footer 
+.footer {
+    background-color: $accent;
+    text-align: center;
+    position: relative;
+
+    color: $bg-color;
+
+    &__label {
+
+        z-index: 1;
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $accent;
+        width: 230px;
+        height: 60px;
+    }
+
+
+    &__text {
+        padding: 85px 0 43px;
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+    &__social {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    &__social-img {
+        margin-bottom: 16px;
+        transition: .3s;
+    }
+
+    &__social-img:hover {
+        transform: translate(-5px);
+    }
+
+    &__contacts {
+        margin-top: 40px;
+        padding-bottom: 63px;
+    }
+
+    &__items {
+        margin-bottom: 40px;
+    }
+
+    &__items-title {
+        text-transform: uppercase;
+        @extend robotocondensed-700 !optional;
+        font-size: 18px;
+        letter-spacing: 2px;
+        line-height: 1.2;
+        margin-bottom: 14px;
+    }
+
+    &__items-text {
+        @extend %roboto-500;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &__down {
+        background-color: $bg-color;
+        height: 142px;
+        padding: 56px 0 20px;
+    }
+
+    &__down-text {
+        text-transform: uppercase;
+        @extend %robotocondensed-400;
+        font-size: 16px;
+        letter-spacing: 2px;
+        color: $text-color;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+// Footer для ширини, більше 640px
+@media (min-width: 640px) {
+    .footer {
+
+        &__text {
+            padding: 85px 40px 43px;
+            font-size: 24px;
+            line-height: 26px;
+        }
+
+        &__social {
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+
+        &__cell {
+            flex: 1;
+            padding: 20px 0;
+            border: 1px solid $text-color;
+            border-right: none;
+            margin-bottom: 40px;
+        }
+
+        &__cell:first-child {
+            border-left: none;
+        }
+
+        &__social-img {
+            margin-bottom: 0px;
+        }
+
+
+        &__contacts {
+            padding-bottom: 125px;
+            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        &__items {
+            margin-bottom: 28px;
+            width: 50%;
+        }
+
+        &__down {
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 23px;
+            padding: 0 15px 0 0;
+        }
+
+        &__down-text {
+            margin: 0px;
+        }
+    }
+}
+
+// Footer для ширини, більше 768px
+@media (min-width: 768px) {
+    .footer {
+        &__text {
+            padding: 114px 45px 40px;
+            font-size: 36px;
+            line-height: 32px;
+        }
+
+        &__contacts {
+            margin-top: 40px;
+            padding-bottom: 125px;
+
+        }
+
+        &__items {
+            margin-bottom: 28px;
+            width: 50%;
+
+        }
+
+        &__items-title {
+            margin-bottom: 28px;
+        }
+    }
+}
+
+// Footer для ширини, більше 1024px
+@media (min-width: 1024px) {
+    .footer {
+        &__text {
+            padding: 158px 0 80px;
+            text-align: left;
+        }
+
+        &__contacts {
+            margin-top: 57px;
+            padding-bottom: 125px;
+            flex-wrap: nowrap;
+        }
+    }
+}
+
+// Footer для ширини, більше 1440px
+@media (min-width: 1440px) {
+    .footer {
+        &__text {
+            padding: 158px 380px 150px 0;
+            line-height: 51px;
+            letter-spacing: 2px;
         }
     }
 }
